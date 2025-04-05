@@ -26,13 +26,13 @@ export const CurrentTemperature = () => {
     });
   };
 
-  const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-  };
-
   useEffect(() => {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
     function success(pos) {
       setCoords(pos.coords);
       setFormCoordinates(null); // Reset form coordinates when geolocation is successful

@@ -51,7 +51,7 @@ export const DisplayCurrentTemperature = ({ coords }) => {
   return (
     <div>
       Hourly temperature forecast:{' '}
-      {temperatures.map(({ temperature, id, time }, index) => (
+      {temperatures.map(({ temperature, id, time }) => (
         <p key={id}>
           {time} - {temperature}°C
         </p>

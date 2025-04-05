@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "lint": "eslint reactComponents",
+    "lint": "eslint src",
     "preview": "vite preview",
     "prettier": "prettier --write ."
   },
