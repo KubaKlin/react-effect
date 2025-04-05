@@ -29,7 +29,8 @@ export const DisplayCurrentTemperature = ({ coords }) => {
           temperature: data.hourly.apparent_temperature[index],
           time: new Date(time).toLocaleTimeString([], {
             hour: '2-digit',
-            minute: '2-digit',}),
+            minute: '2-digit',
+          }),
         }));
         setTemperatures(combinedData);
         setError(null);
