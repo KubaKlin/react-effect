@@ -14,7 +14,11 @@ export const DisplayCurrentCursorPosition = () => {
       });
     };
     window.addEventListener('mousemove', handleMouseMove);
-  }, [cursorPosition]);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <div>
