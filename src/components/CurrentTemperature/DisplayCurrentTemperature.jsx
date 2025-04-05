@@ -24,12 +24,14 @@ export const DisplayCurrentTemperature = ({ coords }) => {
         return response.json();
       })
       .then((data) => {
-        setTemperatures(
-          data.hourly.apparent_temperature.map((value) => ({
-            id: Date.now() + Math.random(),
-            temperature: value,
-          })),
-        );
+        const combinedData = data.hourly.time.map((time, index) => ({
+          id: Date.now() + Math.random(),
+          temperature: data.hourly.apparent_temperature[index],
+          time: new Date(time).toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',}),
+        }));
+        setTemperatures(combinedData);
         setError(null);
       })
       .catch((err) => {
@@ -49,9 +51,9 @@ export const DisplayCurrentTemperature = ({ coords }) => {
   return (
     <div>
       Hourly temperature forecast:{' '}
-      {temperatures.map(({ temperature, id }, index) => (
+      {temperatures.map(({ temperature, id, time }, index) => (
         <p key={id}>
-          {index}:00 - {temperature}°C
+          {time} - {temperature}°C
         </p>
       ))}
     </div>
