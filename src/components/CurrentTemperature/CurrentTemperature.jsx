@@ -47,6 +47,16 @@ export const CurrentTemperature = () => {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newCoordinates = {
+      ...formState,
+    };
+
+    handleAddCoordinates(newCoordinates);
+  };
+
   const activeCoordinates = formCoordinates || coords;
 
   return (
@@ -60,9 +70,9 @@ export const CurrentTemperature = () => {
         <div>
           <p>{errorMessage}</p>
           <TemperatureForm
-            onAddCoordinates={handleAddCoordinates}
             formState={formState}
             onFormChange={handleFormChange}
+            handleSubmit={handleSubmit}
           />
         </div>
       )}

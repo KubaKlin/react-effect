@@ -1,21 +1,7 @@
 import styles from './Form.module.css';
 import { TemperatureInput } from './TemperatureInput';
 
-export const TemperatureForm = ({
-  onAddCoordinates,
-  formState,
-  onFormChange,
-}) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const newCoordinates = {
-      ...formState,
-    };
-
-    onAddCoordinates(newCoordinates);
-  };
-
+export const TemperatureForm = ({ handleSubmit, formState, onFormChange }) => {
   const handleLatitudeInputChange = (event) => {
     onFormChange('latitude', event.target.value);
   };
