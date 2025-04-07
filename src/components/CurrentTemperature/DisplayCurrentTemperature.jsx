@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
-export const DisplayCurrentTemperature = ({ coords }) => {
+export const DisplayCurrentTemperature = ({ coordinates }) => {
   const [temperatures, setTemperatures] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!coords?.latitude || !coords?.longitude) {
+    if (!coordinates?.latitude || !coordinates?.longitude) {
       return;
     }
 
     const searchParams = new URLSearchParams({
-      latitude: coords.latitude,
-      longitude: coords.longitude,
+      latitude: coordinates.latitude,
+      longitude: coordinates.longitude,
     });
 
     fetch(
@@ -39,7 +39,7 @@ export const DisplayCurrentTemperature = ({ coords }) => {
         setError(err.message);
         setTemperatures(null);
       });
-  }, [coords?.latitude, coords?.longitude]);
+  }, [coordinates?.latitude, coordinates?.longitude]);
 
   if (error) {
     return <p>Error: {error}</p>;

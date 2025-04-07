@@ -3,7 +3,7 @@ import { DisplayCurrentTemperature } from './DisplayCurrentTemperature';
 import { TemperatureForm } from './TemperatureForm';
 
 export const CurrentTemperature = () => {
-  const [coords, setCoords] = useState(null);
+  const [coordinates, setCoordinates] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [formCoordinates, setFormCoordinates] = useState(null);
 
@@ -33,8 +33,8 @@ export const CurrentTemperature = () => {
       maximumAge: 0,
     };
 
-    function success(pos) {
-      setCoords(pos.coords);
+    function success(position) {
+      setCoordinates(position.coordinates);
       setFormCoordinates(null); // Reset form coordinates when geolocation is successful
     }
 
@@ -57,14 +57,14 @@ export const CurrentTemperature = () => {
     handleAddCoordinates(newCoordinates);
   };
 
-  const activeCoordinates = formCoordinates || coords;
+  const activeCoordinates = formCoordinates || coordinates;
 
   return (
     <div>
       <h2>Current temperature:</h2>
-      {coords ? (
+      {coordinates ? (
         <p>
-          Latitude: {coords.latitude}, Longitude: {coords.longitude}
+          Latitude: {coordinates.latitude}, Longitude: {coordinates.longitude}
         </p>
       ) : (
         <div>
@@ -76,7 +76,7 @@ export const CurrentTemperature = () => {
           />
         </div>
       )}
-      <DisplayCurrentTemperature coords={activeCoordinates} />
+      <DisplayCurrentTemperature coordinates={activeCoordinates} />
     </div>
   );
 };
